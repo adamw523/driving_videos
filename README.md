@@ -47,3 +47,13 @@ docker run -it --entrypoint /bin/sh -v=`pwd`:/tmp/work -v/Volumes/photos_drive/d
 docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving opencoconut/ffmpeg -f concat -safe 0 -i /tmp/work/driving_files_in_docker.txt -c copy /tmp/driving/concat.mp4
 ```
 
+#### Decrease frame rate
+
+```
+docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving opencoconut/ffmpeg -i /tmp/driving/concat.mp4 -r 15 /tmp/driving/concat_15fps.mp4
+```
+
+#### Scale frame size
+```
+docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving opencoconut/ffmpeg -i /tmp/driving/concat.mp4 -vf scale=960:-1 /tmp/driving/concat_960.mp4
+```
