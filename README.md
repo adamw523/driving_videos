@@ -28,10 +28,10 @@ cat driving_viles.txt  | cut -d'/' -f6 | sort | uniq -d > dupes.txt
 
 #### Remove duplicate files
 
-#### Docker freindly paths in driving file
+#### Docker freindly paths in driving file with file directive
 
 ```
-cat driving_files.txt | sed -e 's/\/Volumes\/photos_drive/\/tmp/' > driving_files_in_docker.txt
+cat driving_files.txt | sed -e 's/\/Volumes\/photos_drive/file \/tmp/' > driving_files_in_docker.txt
 ```
 
 #### Docker check
@@ -44,9 +44,6 @@ docker run -it --entrypoint /bin/sh -v=`pwd`:/tmp/work -v/Volumes/photos_drive/d
 #### Concatenate!
 
 ```
-docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving opencoconut/ffmpeg -f concat -safe 0 -i /tmp/work/driving_files_in_docker_short.txt -c copy /tmp/driving/concat.mp4
-
-ffmpeg -f concat -safe 0 -i mylist.txt -c copy output
-
+docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving opencoconut/ffmpeg -f concat -safe 0 -i /tmp/work/driving_files_in_docker.txt -c copy /tmp/driving/concat.mp4
 ```
 
