@@ -57,3 +57,12 @@ docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving openc
 ```
 docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving opencoconut/ffmpeg -i /tmp/driving/concat.mp4 -vf scale=960:-1 /tmp/driving/concat_960.mp4
 ```
+
+
+#### Create music loop
+
+```
+docker run -v=`pwd`:/tmp/work -v/Volumes/photos_drive/driving:/tmp/driving opencoconut/ffmpeg -lavfi "amovie=/tmp/work/shape_of_you_loop.wav:loop=81360" /tmp/work/loop_81360.wav
+```
+
+
